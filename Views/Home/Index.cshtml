@@ -1,23 +1,25 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@page
+@model IndexPageUI.Index
+@{
+    ViewBag.Title = "Home Page";
 }
 
 <div>
     <div>
-        <label>Search:</label>
-        <input type="text" id="SearchValue" name="SearchValue"/>
-        <label>Type:</label>
-        <select>
-            <option>Movie</option>
-            <option>Podcast</option>
-            <option>Music</option>
-            <option>Music Video</option>
-            <option>Audio Book</option>
-            <option>Short Film</option>
-            <option>TV Show</option>
-            <option>Software</option>
-            <option>Ebook</option>
-            <option>All</option>
-        </select>
+        <br><p>Enter Search Details</p>
+        @using (Html.BeginForm())
+        {
+            <div>
+                <lable>Search:</lable>
+                @Html.TextBox("searchphrase")
+
+                <lable>Type:</lable>
+                @Html.DropDownList("entity",
+                new SelectList(Enum.GetValues(typeof(SearchEntities.iTunes))))
+
+                <input type="submit" value="Search" />
+            </div>
+        }
+
     </div>
 </div>

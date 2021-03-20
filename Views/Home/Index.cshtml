@@ -1,5 +1,4 @@
-﻿@page
-@model IndexPageUI.Index
+﻿@model IndexPageUI.Index
 @{
     ViewBag.Title = "Home Page";
 }
@@ -20,6 +19,9 @@
                 <input type="submit" value="Search" />
             </div>
         }
+
+        <label>Results: </label>
+        <input type="text" id="SearchResults" name="SearchResults" value="@Model.Result" readonly><br>
 
     </div>
 </div>

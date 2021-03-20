@@ -14,7 +14,7 @@ namespace AbsoluteLabelServicesTechnicalTest.Controllers
         static ISearchType searchType = new ItunesSearch();
         static IWebReader webReader = new WebReader();
         Index IndexModelData = new Index(searchType, webReader);
-
+        
         public IActionResult Index()
         {
             return View(IndexModelData);

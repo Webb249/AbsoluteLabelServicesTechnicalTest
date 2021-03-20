@@ -13,7 +13,7 @@ namespace IndexPageUI
         // Store the list of entity types that can be used
         public SearchEntities.iTunes TypeList { get; set; }
         // Results from the search stored as a string
-        public string SearchReults { get; set; }
+        public string Result { get; set; }
 
         private ISearchType _searchType;
         private IWebReader _webReader;
@@ -32,7 +32,10 @@ namespace IndexPageUI
             _searchType.SetSearchValues(SearchPhrase, Entity);
             _webReader.SetWebURL(_searchType.GetSearchAddress());
 
-            SearchReults = await Task.Run(() => { return _webReader.GetSearchResults(); });
+            Result = await Task.Run(() => { return _webReader.GetSearchResults(); });
+
+            JSONReader jSONReader = new JSONReader();
+            var newr = jSONReader.GetRequestedResults(Result);
         }
     }
 }

@@ -6,6 +6,6 @@ namespace AbsoluteLabelServicesTechnicalTest.Models
 {
     public interface IResultsReader
     {
-        Dictionary<string, object> ConvertToResultsInfo(string results);
+        List<EntityTypeStorage> GetRequestedResults(string results);
     }
 }

@@ -30,7 +30,7 @@ namespace AbsoluteLabelServicesTechnicalTest.Models
             { "MusicVideo", "musicVideo" },
             { "AudioBook", "audiobook" },
             { "ShortFilm", "shortFilm" },
-            { "TVShow", "tvEpsiode" },
+            { "TVShow", "tvSeason" },
             { "Software", "software" },
             { "Ebook", "ebook" }
         };

@@ -16,12 +16,21 @@
                 @Html.DropDownList("entity",
                 new SelectList(Enum.GetValues(typeof(SearchEntities.iTunes))))
 
-                <input type="submit" value="Search" />
+                <input type="submit" value="Search" /><br/><br/>
             </div>
         }
 
-        <label>Results: </label>
-        <input type="text" id="SearchResults" name="SearchResults" value="@Model.Result" readonly><br>
+        @foreach (EntityTypeStorage item in Model.ResultsList)
+        {
+            <div>
+                <img src="@item.artworkUrl100">
+
+                @Html.DisplayFor(modelItem => item.artistName) <br />
+                @Html.DisplayFor(modelItem => item.trackName) <br />
+                @Html.DisplayFor(modelItem => item.releaseDate) <br />
+
+            </div> <br/><br/>
+        }
 
     </div>
 </div>

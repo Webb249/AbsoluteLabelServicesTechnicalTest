@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using AbsoluteLabelServicesTechnicalTest.Models;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace IndexPageUI
 {
@@ -13,7 +14,7 @@ namespace IndexPageUI
         // Store the list of entity types that can be used
         public SearchEntities.iTunes TypeList { get; set; }
         // Results from the search stored as a string
-        public string Result { get; set; }
+        public List<EntityTypeStorage> ResultsList { get; set; } = new List<EntityTypeStorage>();
 
         private ISearchType _searchType;
         private IWebReader _webReader;
@@ -32,10 +33,10 @@ namespace IndexPageUI
             _searchType.SetSearchValues(SearchPhrase, Entity);
             _webReader.SetWebURL(_searchType.GetSearchAddress());
 
-            Result = await Task.Run(() => { return _webReader.GetSearchResults(); });
+            string results = await Task.Run(() => { return _webReader.GetSearchResults(); });
 
             JSONReader jSONReader = new JSONReader();
-            var newr = jSONReader.GetRequestedResults(Result);
+            ResultsList = jSONReader.GetRequestedResults(results);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace AbsoluteLabelServicesTechnicalTest.Models
             Dictionary<string, object> dictResults = ConvertJsonToDict(results);
 
             // Comvert only the actual results of the search into the struct
-            List<EntityTypeStorage> test = JsonConvert.DeserializeObject<List<EntityTypeStorage>>(dictResults["results"].ToString());
+            info = JsonConvert.DeserializeObject<List<EntityTypeStorage>>(dictResults["results"].ToString());
             
             return info;
         }

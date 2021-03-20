@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace AbsoluteLabelServicesTechnicalTest.Models
+namespace AbsoluteLabelServicesTechnicalTest.Services
 {
     /// <summary>
     /// Contains the entity types used with the search

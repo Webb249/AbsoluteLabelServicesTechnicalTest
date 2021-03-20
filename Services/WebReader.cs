@@ -1,7 +1,9 @@
 ﻿
+using System;
 using System.Net;
+using System.Threading.Tasks;
 
-namespace AbsoluteLabelServicesTechnicalTest.Models
+namespace AbsoluteLabelServicesTechnicalTest.Services
 {
     public class WebReader : IWebReader
     {
@@ -12,7 +14,7 @@ namespace AbsoluteLabelServicesTechnicalTest.Models
             this._URL = URL;
         }
 
-        public string GetSearchResults()
+        public async Task<string> GetSearchResultsAsync()
         {
             string searchResult = "";
 
@@ -21,7 +23,7 @@ namespace AbsoluteLabelServicesTechnicalTest.Models
 
             using (WebClient webClient = new WebClient())
             {
-                searchResult = webClient.DownloadString(formattedString);
+                searchResult = await webClient.DownloadStringTaskAsync(new Uri(formattedString));
             }
 
             return searchResult;

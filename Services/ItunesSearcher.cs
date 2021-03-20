@@ -1,9 +1,9 @@
-﻿namespace AbsoluteLabelServicesTechnicalTest.Models
+﻿namespace AbsoluteLabelServicesTechnicalTest.Services
 {
     /// <summary>
     /// ISearchType for the itunes api searching
     /// </summary>
-    public class ItunesSearch : ISearchType
+    public class ItunesSearcher : ISearcher
     {
         private string SearchAddress = "https://itunes.apple.com/search?";
         private string _value = "";

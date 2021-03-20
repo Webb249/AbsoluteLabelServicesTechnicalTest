@@ -1,8 +1,9 @@
 ﻿
 
+using AbsoluteLabelServicesTechnicalTest.Models;
 using System.Collections.Generic;
 
-namespace AbsoluteLabelServicesTechnicalTest.Models
+namespace AbsoluteLabelServicesTechnicalTest.Services
 {
     public interface IResultsReader
     {

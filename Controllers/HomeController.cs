@@ -1,4 +1,5 @@
 ﻿using AbsoluteLabelServicesTechnicalTest.Models;
+using AbsoluteLabelServicesTechnicalTest.Services;
 using IndexPageUI;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,26 +11,24 @@ using System.Threading.Tasks;
 namespace AbsoluteLabelServicesTechnicalTest.Controllers
 {
     public class HomeController : Controller 
-    {
-        static ISearchType searchType = new ItunesSearch();
-        static IWebReader webReader = new WebReader();
-        Index IndexModelData = new Index(searchType, webReader);
+    {        
+        private readonly HomeModel indexModelData = new HomeModel();
         
         public IActionResult Index()
         {
-            return View(IndexModelData);
+            return View(indexModelData);
         }
 
         // Run when submit button pressed
         [HttpPost]
         public async Task<IActionResult> Index(string searchphrase, string entity)
         {
-            IndexModelData.SearchPhrase = searchphrase;
-            IndexModelData.Entity = entity;
+            // Left hardcoded, but with ability to add new api's easily
+            IApi api = new ItunesApi();
 
-            await IndexModelData.RunGetSearchResults();
+            indexModelData.ResultsList = await api.GetSearchResultsAsync(searchphrase, entity);
 
-            return View(IndexModelData);
+            return View(indexModelData);
         }
 
 

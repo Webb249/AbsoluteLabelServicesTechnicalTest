@@ -1,15 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using AbsoluteLabelServicesTechnicalTest.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace AbsoluteLabelServicesTechnicalTest.Models
+namespace AbsoluteLabelServicesTechnicalTest.Services
 {
-    public class JSONReader : IResultsReader
+    public class ItunesJSONReader : IResultsReader
     {
 
-        public List<EntityTypeStorage>GetRequestedResults(string results)
+        public List<EntityTypeStorage> GetRequestedResults(string results)
         {
             List<EntityTypeStorage> info = new List<EntityTypeStorage>();
             // Convert the results into a controllerable state

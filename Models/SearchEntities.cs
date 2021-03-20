@@ -1,12 +1,13 @@
 ﻿
+using System.Collections.Generic;
+
 namespace AbsoluteLabelServicesTechnicalTest.Models
 {
     /// <summary>
     /// Contains the entity types used with the search
     /// </summary>
-    public class SearchEntities
+    public static class SearchEntities
     {
-
         // List of entity types itunes supports
         public enum iTunes
         {
@@ -18,8 +19,20 @@ namespace AbsoluteLabelServicesTechnicalTest.Models
             ShortFilm,
             TVShow,
             Software,
-            Ebook,
-            All
+            Ebook
         }
+
+        // Entities and their actual value to be used in the search
+        public static Dictionary<string, string> iTunesEntityRelationship = new Dictionary<string, string> {
+            { "Movie", "movie" },
+            { "Podcast", "podcast" },
+            { "Music", "musicTrack" },
+            { "MusicVideo", "musicVideo" },
+            { "AudioBook", "audiobook" },
+            { "ShortFilm", "shortFilm" },
+            { "TVShow", "tvEpsiode" },
+            { "Software", "software" },
+            { "Ebook", "ebook" }
+        };
     }
 }

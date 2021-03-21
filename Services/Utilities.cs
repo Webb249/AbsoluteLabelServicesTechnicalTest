@@ -24,6 +24,12 @@ namespace AbsoluteLabelServicesTechnicalTest.Services
             return rDate;
         }
 
+        /// <summary>
+        /// Loops through list and removes any value older than the confirgured MaxYearShown
+        /// </summary>
+        /// <param name="entityList"></param>
+        /// <param name="configuration"></param>
+        /// <returns>List without outdated values</returns>
         public static List<EntityTypeStorage> RemoveOutDatedValues(List<EntityTypeStorage> entityList, IConfiguration configuration)
         {
             List<EntityTypeStorage> rList = new List<EntityTypeStorage>();

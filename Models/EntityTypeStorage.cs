@@ -12,7 +12,7 @@ namespace AbsoluteLabelServicesTechnicalTest.Models
         private DateTime releaseDateTime;
         public string releaseDate 
         { 
-            get { return Utilties.ConvertDateToLocalFormat(releaseDateTime); } 
+            get { return Utilities.ConvertDateToLocalFormat(releaseDateTime); } 
             set { releaseDateTime = DateTime.Parse(value); }
         }
 

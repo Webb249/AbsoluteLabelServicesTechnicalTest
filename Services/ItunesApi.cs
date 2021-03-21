@@ -14,12 +14,12 @@ namespace AbsoluteLabelServicesTechnicalTest.Services
         /// <returns>List of search results</returns>
         public async Task<List<EntityTypeStorage>> GetSearchResultsAsync(string searchphrase, string entity)
         {
-            ISearcher searchType = new ItunesSearcher();
+            ISearcher searcher = new ItunesSearcher();
             IWebReader webReader = new WebReader();
             IResultsReader jSONReader = new ItunesJSONReader();
 
-            searchType.SetSearchValues(searchphrase, entity);
-            webReader.SetWebURL(searchType.GetSearchAddress());
+            searcher.SetSearchValues(searchphrase, entity);
+            webReader.SetWebURL(searcher.GetSearchAddress());
 
             string results = await webReader.GetSearchResultsAsync();
 

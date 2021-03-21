@@ -1,10 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using AbsoluteLabelServicesTechnicalTest.Services;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 
 namespace AbsoluteLabelServicesTechnicalTest.Models
 {
     public class HomeModel
     {
-        // Results from the search stored as a string
-        public List<EntityTypeStorage> ResultsList { get; set; } = new List<EntityTypeStorage>();
+        public IConfiguration configuration;
+
+        private List<EntityTypeStorage> resultsList = new List<EntityTypeStorage>();
+        public List<EntityTypeStorage> ResultsList 
+        {
+            get { return Utilities.RemoveOutDatedValues(resultsList, configuration); }
+            set { resultsList = value; }
+        
+        }
     }
 }

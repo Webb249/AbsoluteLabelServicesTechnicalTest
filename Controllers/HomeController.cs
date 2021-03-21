@@ -2,6 +2,7 @@
 using AbsoluteLabelServicesTechnicalTest.Services;
 using IndexPageUI;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -10,7 +11,12 @@ namespace AbsoluteLabelServicesTechnicalTest.Controllers
     public class HomeController : Controller 
     {        
         private readonly HomeModel indexModelData = new HomeModel();
-        
+
+        public HomeController(IConfiguration iconfig)
+        {
+            indexModelData.configuration = iconfig;
+        }
+
         public IActionResult Index()
         {
             return View(indexModelData);
@@ -22,7 +28,7 @@ namespace AbsoluteLabelServicesTechnicalTest.Controllers
         {
             // Left hardcoded, but with ability to add new api's easily
             IApi api = new ItunesApi();
-
+                        
             indexModelData.ResultsList = await api.GetSearchResultsAsync(searchphrase, entity);
 
             return View(indexModelData);

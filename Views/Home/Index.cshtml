@@ -24,13 +24,13 @@
         {
             <div>
                 <img src="@item.artworkUrl100">
+                <div>
+                    @Html.DisplayFor(modelItem => item.artistName) <br />
+                    @Html.DisplayFor(modelItem => item.trackName) <br />
+                    @Html.DisplayFor(modelItem => item.releaseDate) <br />
+                </div>
+            </div> <br /><br />
+            }
 
-                @Html.DisplayFor(modelItem => item.artistName) <br />
-                @Html.DisplayFor(modelItem => item.trackName) <br />
-                @Html.DisplayFor(modelItem => item.releaseDate) <br />
-
-            </div> <br/><br/>
-        }
-
-    </div>
+        </div>
 </div>

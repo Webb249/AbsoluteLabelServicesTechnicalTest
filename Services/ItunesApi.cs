@@ -9,8 +9,11 @@ namespace AbsoluteLabelServicesTechnicalTest.Services
     public class ItunesApi : IApi
     {
         /// <summary>
-        /// Get the search results
+        /// Get search results from web api
         /// </summary>
+        /// <param name="searchphrase"></param>
+        /// <param name="entity"></param>
+        /// <returns>List of search results</returns>
         public async Task<List<EntityTypeStorage>> GetSearchResultsAsync(string searchphrase, string entity)
         {
             ISearcher searchType = new ItunesSearcher();

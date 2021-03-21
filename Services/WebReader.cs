@@ -14,6 +14,10 @@ namespace AbsoluteLabelServicesTechnicalTest.Services
             this._URL = URL;
         }
 
+        /// <summary>
+        /// Call api service url for search results
+        /// </summary>
+        /// <returns>Api results string</returns>
         public async Task<string> GetSearchResultsAsync()
         {
             string searchResult = "";

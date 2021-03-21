@@ -10,6 +10,11 @@ namespace AbsoluteLabelServicesTechnicalTest.Services
     public class ItunesJSONReader : IResultsReader
     {
 
+        /// <summary>
+        /// Convert the string input into a list of structs
+        /// </summary>
+        /// <param name="results"></param>
+        /// <returns>Requested values</returns>
         public List<EntityTypeStorage> GetRequestedResults(string results)
         {
             List<EntityTypeStorage> info = new List<EntityTypeStorage>();
@@ -22,22 +27,27 @@ namespace AbsoluteLabelServicesTechnicalTest.Services
             return info;
         }
 
-        private Dictionary<string, object> ConvertJsonToDict(string jo)
+        /// <summary>
+        /// Loop through all levels of the json string and convert to a Dictionary
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns>Dicitionary of object values</returns>
+        private Dictionary<string, object> ConvertJsonToDict(string json)
         {
-            var values = JsonConvert.DeserializeObject<Dictionary<string, object>>(jo);
-            var values2 = new Dictionary<string, object>();
-            foreach (KeyValuePair<string, object> d in values)
+            Dictionary<string, object> deserializedJson = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
+            Dictionary<string, object> valuesDict = new Dictionary<string, object>();
+            foreach (KeyValuePair<string, object> d in deserializedJson)
             {
                 if (d.Value is JObject)
                 {
-                    values2.Add(d.Key, ConvertJsonToDict(d.Value.ToString()));
+                    valuesDict.Add(d.Key, ConvertJsonToDict(d.Value.ToString()));
                 }
                 else
                 {
-                    values2.Add(d.Key, d.Value);
+                    valuesDict.Add(d.Key, d.Value);
                 }
             }
-            return values2;
+            return valuesDict;
         }
     }
 }
